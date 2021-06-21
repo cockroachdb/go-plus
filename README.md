@@ -32,7 +32,7 @@ even with a “vanilla” Go compiler and runtime.
 
 To actually enable the extension:
 
-1. clone the repository at github.com/cockroachdb/go
+1. clone the repository at https://github.com/cockroachdb/go
 2. check out the `crdb-fixes` branch
 3. build the runtime: `bash src/make.bash`
 4. build the Go application with:

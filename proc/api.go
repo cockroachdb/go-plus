@@ -29,6 +29,9 @@ func Supported() bool {
 }
 
 // GetGID retrieves the goroutine (G's) ID.
+//
+// This works even when the extension is not supported,
+// by relying on github.com/petermattis/goid.
 func GetGID() int64 {
 	return internalGetGID()
 }
@@ -49,7 +52,7 @@ func GetIGID() int64 {
 // A possible good value to use is the value of GetGID(),
 // to obtain a behavior similar to process group IDs on unix.
 //
-// No-op if the extnesion is not supported.
+// No-op if the extension is not supported.
 func SetIGID(igid int64) {
 	internalSetIGID(igid)
 }

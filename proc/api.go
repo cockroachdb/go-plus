@@ -17,6 +17,9 @@
 // It also creates a new abstration: the inheritable goroutine ID, or
 // IGID, which is automatically copied from parent to children
 // goroutines.
+//
+// Programs should use the Supported() API function to determine whether
+// the Go runtime extension is available.
 package proc
 
 // Supported returns true iff the Go ID extension is available

@@ -29,6 +29,9 @@
 // control the specific value of IGIDs, whereas they cannot control the
 // specific address or identification of task groups - these are chosen
 // by the runtime when calling SetInternalTaskGroup().
+//
+// Programs should use the Supported() API function to determine whether
+// the Go runtime extension is available.
 package taskgroup
 
 import "runtime/metrics"
@@ -59,6 +62,12 @@ func SetTaskGroup() T {
 // ReadTaskGroupMetrics reads the runtime metrics for the specified
 // task group. This is similar to the Go standard metrics.Read() but
 // reads metrics scoped to just one task group.
+//
+// The following metric names are supported:
+//
+//   /taskgroup/sched/ticks:ticks
+//   /taskgroup/sched/cputime:nanoseconds
+//   /taskgroup/heap/largeHeapUsage:bytes
 //
 // If the extension is not supported, the metric value will be
 // initialized with metric.KindBad.

@@ -12,7 +12,7 @@
 // implied. See the License for the specific language governing
 // permissions and limitations under the License.
 
-// +build crlext
+// +build goplus
 
 package taskgroup
 
@@ -30,5 +30,5 @@ func internalSetTaskGroup() T {
 }
 
 func internalReadTaskGroupMetrics(taskGroup T, m []metrics.Sample) {
-	runtime.ReadTaskGroup(taskGroup, m)
+	metrics.ReadTaskGroup(taskGroup, m)
 }

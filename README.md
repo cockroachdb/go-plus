@@ -20,3 +20,31 @@ The following two extensions are provided:
   goroutines.
 
   API doc link: https://pkg.go.dev/github.com/cockroachdb/go-plus/taskgroup
+
+## How to use in Go programs
+
+When using this library with a “vanilla” Go runtime, the `Supported()`
+API calls in each package return `false`, to indicate the extension is
+not available.
+
+This makes it possible to build Go programs using this API
+even with a “vanilla” Go compiler and runtime.
+
+To actually enable the extension:
+
+1. clone the repository at github.com/cockroachdb/go
+2. check out the `crdb-fixes` branch
+3. build the runtime: `bash src/make.bash`
+4. build the Go application with:
+   - `GOROOT` set to the custom go source tree
+   - `PATH` including `$GOROOT/bin` at the start
+   - add the tag `goplus` to the build command line,
+     for example: `go build -tags goplus`
+
+Possible build configurations:
+
+|                                       | “vanilla” Go runtime             | Built with `crdb-fixes` runtime extension |
+|---------------------------------------|----------------------------------|-------------------------------------------|
+| Program compiled without `goplus` tag | `Supported() == false`           | `Supported() == false`                    |
+| Program compiled with `goplus` tag    | Build error in `go-plus` library | `Supported() == true`                     |
+

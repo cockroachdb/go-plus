@@ -12,7 +12,7 @@
 // implied. See the License for the specific language governing
 // permissions and limitations under the License.
 
-// +build crlext
+// +build goplus
 
 package proc
 
@@ -65,5 +65,5 @@ func internalGetExternalErrorFd() int {
 }
 
 func internalSetExternalErrorFd(fd int) {
-	runtime.SetExternalErrorFd()
+	runtime.SetExternalErrorFd(fd)
 }

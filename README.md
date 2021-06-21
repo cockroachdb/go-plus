@@ -39,7 +39,12 @@ To actually enable the extension:
    - `GOROOT` set to the custom go source tree
    - `PATH` including `$GOROOT/bin` at the start
    - add the tag `goplus` to the build command line,
-     for example: `go build -tags goplus`
+     for example:
+
+	 ```
+	 $ go build -tags goplus ...
+	 $ go run -tags goplus ...
+	 ```
 
 Possible build configurations:
 

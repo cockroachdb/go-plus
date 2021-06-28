@@ -38,18 +38,9 @@ To actually enable the extension:
 4. build the Go application with:
    - `GOROOT` set to the custom go source tree
    - `PATH` including `$GOROOT/bin` at the start
-   - add the tag `goplus` to the build command line,
-     for example:
 
-	 ```
-	 $ go build -tags goplus ...
-	 $ go run -tags goplus ...
-	 ```
-
-Possible build configurations:
-
-|                                       | “vanilla” Go runtime             | Built with `crdb-fixes` runtime extension |
-|---------------------------------------|----------------------------------|-------------------------------------------|
-| Program compiled without `goplus` tag | `Supported() == false`           | `Supported() == false`                    |
-| Program compiled with `goplus` tag    | Build error in `go-plus` library | `Supported() == true`                     |
-
+Note: the way this works is that the customized go runtime implicitly
+provides an extra build tag `goplus`. One can check whether the custom
+runtime is active with e.g. `go test -v ./proc` inside the library
+(the provided `TestSupported` reports the build tags and support
+status).
